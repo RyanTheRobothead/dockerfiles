@@ -139,7 +139,7 @@ services:
     # release version instead of using `latest`.
     # Check https://github.com/offen/docker-volume-backup/releases
     # for a list of available releases.
-    image: offen/docker-volume-backup:v2.43.1
+    image: offen/docker-volume-backup:v2.47.0
     container_name: backup
     restart: unless-stopped
     env_file: ./backup.env # see below for configuration reference
@@ -192,4 +192,6 @@ services:
       - /dev/nvme0:/dev/nvme0
       - /dev/sda:/dev/sda
       - /dev/sdb:/dev/sdb
+      - /dev/sdc:/dev/sdc
+      - /dev/sdd:/dev/sdd
     restart: unless-stopped
