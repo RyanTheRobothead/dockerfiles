@@ -80,20 +80,20 @@ services:
       - ${DATA_DIR}/nc_postgres/data:/var/lib/postgresql/data
     labels:
       - docker-volume-backup.stop-during-backup=true
-  onlyoffice:
-    image: onlyoffice/documentserver
-    container_name: onlyoffice
-    restart: unless-stopped
-    env_file: onlyoffice.env
-    volumes:
-      - ${DATA_DIR}/onlyoffice/config/logs:/var/log/onlyoffice
-      - ${DATA_DIR}/onlyoffice/data/certs:/var/www/onlyoffice/Data
-      - ${DATA_DIR}/onlyoffice/data/onlyoffice:/var/lib/onlyoffice
-      - ${DATA_DIR}/onlyoffice/data/postgresql:/var/lib/postgresql
-    ports:
-      - 8282:80
-    labels:
-      - docker-volume-backup.stop-during-backup=true
+  #onlyoffice:
+  #  image: onlyoffice/documentserver
+  #  container_name: onlyoffice
+  #  restart: unless-stopped
+  #  env_file: onlyoffice.env
+  #  volumes:
+  #    - ${DATA_DIR}/onlyoffice/config/logs:/var/log/onlyoffice
+  #    - ${DATA_DIR}/onlyoffice/data/certs:/var/www/onlyoffice/Data
+  #    - ${DATA_DIR}/onlyoffice/data/onlyoffice:/var/lib/onlyoffice
+  #    - ${DATA_DIR}/onlyoffice/data/postgresql:/var/lib/postgresql
+  #  ports:
+  #    - 8282:80
+  #  labels:
+  #    - docker-volume-backup.stop-during-backup=true
       #freshrss:
       #  image: lscr.io/linuxserver/freshrss:latest
       #  container_name: freshrss
