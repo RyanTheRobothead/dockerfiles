@@ -133,6 +133,51 @@ endpoints:
     alerts:
       - type: discord
 
+  - name: sonarr
+    group: aegis
+    url: http://aegis:8989
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: radarr
+    group: aegis
+    url: http://aegis:7878
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: lidarr
+    group: aegis
+    url: http://aegis:8686
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: nzbget
+    group: aegis
+    url: http://aegis:6789
+    interval: 60s
+    conditions:
+      - "[STATUS] < 500"
+    alerts:
+      - type: discord
+
+  - name: ombi
+    group: aegis
+    url: http://aegis:3579
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
   - name: prowlarr
     group: aegis
     url: http://aegis:9696
