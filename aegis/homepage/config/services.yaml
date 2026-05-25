@@ -1,0 +1,139 @@
+- Media:
+    - Plex:
+        href: https://plex.ryandlewis.dev
+        icon: plex.png
+        container: plex
+        server: my-docker
+        description: Media streaming
+    - Jellyfin:
+        href: https://jellyfin.ryandlewis.dev
+        icon: jellyfin.png
+        container: jellyfin
+        server: my-docker
+        description: Media streaming
+    - Sonarr:
+        href: http://aegis:8989
+        icon: sonarr.png
+        container: sonarr
+        server: my-docker
+        description: TV show management
+    - Radarr:
+        href: http://aegis:7878
+        icon: radarr.png
+        container: radarr
+        server: my-docker
+        description: Movie management
+    - Lidarr:
+        href: http://aegis:8686
+        icon: lidarr.png
+        container: lidarr
+        server: my-docker
+        description: Music management
+    - Prowlarr:
+        href: http://aegis:9696
+        icon: prowlarr.png
+        container: prowlarr
+        server: my-docker
+        description: Indexer manager
+    - qBittorrent:
+        href: http://aegis:7070
+        icon: qbittorrent.png
+        container: qbittorrent
+        server: my-docker
+        description: Torrent client
+    - NZBGet:
+        href: http://aegis:6789
+        icon: nzbget.png
+        container: nzbget
+        server: my-docker
+        description: Usenet client
+    - Ombi:
+        href: https://request.ryandlewis.dev
+        icon: ombi.png
+        container: ombi
+        server: my-docker
+        description: Media requests
+
+- Productivity:
+    - Nextcloud:
+        href: https://cloud.ryandlewis.dev
+        icon: nextcloud.png
+        container: nextcloud
+        server: my-docker
+        description: Files, calendar, contacts
+    - Vaultwarden:
+        href: https://warden.ryandlewis.dev
+        icon: vaultwarden.png
+        container: vaultwarden
+        server: my-docker
+        description: Password manager
+    - Paperless-ngx:
+        href: http://aegis:8000
+        icon: paperless.png
+        container: paperless_webserver
+        server: my-docker
+        description: Document management
+    - Immich:
+        href: https://immich.ryandlewis.dev
+        icon: immich.png
+        description: Photo backup
+    - Syncthing:
+        href: http://aegis:8384
+        icon: syncthing.png
+        container: syncthing
+        server: my-docker
+        description: File synchronization
+
+- Gaming:
+    - FoundryVTT:
+        href: https://foundry.ryandlewis.dev
+        icon: foundryvtt.png
+        container: foundryvtt
+        server: my-docker
+        description: Virtual tabletop (v11)
+    - NeoFoundryVTT:
+        href: https://neofoundry.ryandlewis.dev
+        icon: foundryvtt.png
+        container: neofoundryvtt
+        server: my-docker
+        description: Virtual tabletop (v13)
+
+- Infrastructure:
+    - Pi-hole:
+        href: http://aegis:8880/admin
+        icon: pi-hole.png
+        container: pihole
+        server: my-docker
+        description: DNS sinkhole
+    - Scrutiny:
+        href: http://aegis:8888
+        icon: scrutiny.png
+        container: scrutiny
+        server: my-docker
+        description: Drive health monitoring
+    - Gatus:
+        href: http://aegis:8090
+        icon: gatus.png
+        container: gatus
+        server: my-docker
+        description: Uptime monitoring
+
+- Cerberus:
+    - Smokeping:
+        href: http://cerberus:8888
+        icon: smokeping.png
+        description: Latency monitoring
+    - LibreSpeed:
+        href: http://cerberus:8889
+        icon: librespeed.png
+        description: Speed test
+    - SWAG:
+        href: https://cerberus
+        icon: swag.png
+        description: Reverse proxy / public ingress
+
+- Home Assistant:
+    - Home Assistant:
+        href: http://homeassistant:8123
+        icon: home-assistant.png
+        description: Home automation

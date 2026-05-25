@@ -3,6 +3,7 @@ include:
   - ./compose.office.yaml
   - ./compose.paperless.yaml
   - ./compose.gatus.yaml
+  - ./compose.homepage.yaml
   - path: ./immich/compose.immich.yaml
     env_file:
       - ./.env

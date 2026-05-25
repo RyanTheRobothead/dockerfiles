@@ -1,0 +1,17 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - TZ=America/Chicago
+      - HOMEPAGE_ALLOWED_HOSTS=aegis:3000,localhost:3000
+    group_add:
+      - ${DOCKER_GID:-999}
+    volumes:
+      - ./homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - docker-volume-backup.stop-during-backup=true
