@@ -56,4 +56,13 @@ services:
     ports:
       - 8889:80
     restart: unless-stopped
-
+  gatus:
+    image: twinproduction/gatus:latest
+    container_name: gatus
+    restart: unless-stopped
+    env_file: ./gatus.env
+    ports:
+      - 8090:8080
+    volumes:
+      - ./gatus/config.yaml:/config/config.yaml:ro
+      - /home/luckierdodge/cerberus-storage/data/gatus/data:/data

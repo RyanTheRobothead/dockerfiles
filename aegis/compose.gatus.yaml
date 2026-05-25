@@ -1,0 +1,13 @@
+services:
+  gatus:
+    image: twinproduction/gatus:latest
+    container_name: gatus
+    restart: unless-stopped
+    env_file: ./gatus.env
+    ports:
+      - 8090:8080
+    volumes:
+      - ./gatus/config.yaml:/config/config.yaml:ro
+      - ${DATA_DIR}/gatus/data:/data
+    labels:
+      - docker-volume-backup.stop-during-backup=true

@@ -1,41 +1,41 @@
 services:
-  calibre:
-    image: ghcr.io/linuxserver/calibre
-    container_name: calibre
-    environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=America/Chicago
-      - PASSWORD=Simple123
-      - UMASK_SET=022
-    volumes:
-      - ${DATA_DIR}/nextcloud/data/luckierdodge/files/Library:/Library
-      - ${DATA_DIR}/calibre/config:/config
-      - ${MEDIA_DIR}/books:/books
-    ports:
-      - 8080:8080
-      - 8081:8081
-      - 9090:9090
-      - 9091:9091
-    restart: unless-stopped
-    labels:
-      - docker-volume-backup.stop-during-backup=true
-  calibre-web:
-    image: ghcr.io/linuxserver/calibre-web
-    container_name: calibre-web
-    environment:
-      - PUID=1000
-      - PGID=100
-      - TZ=America/Chicago
-      - DOCKER_MODS=linuxserver/calibre-web:calibre
-    volumes:
-      - ${DATA_DIR}/calibre-web/config:/config
-      - ${DATA_DIR}/calibre/config:/books
-    ports:
-      - 8083:8083
-    restart: unless-stopped
-    labels:
-      - docker-volume-backup.stop-during-backup=true
+  # calibre:
+  #   image: ghcr.io/linuxserver/calibre
+  #   container_name: calibre
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=100
+  #     - TZ=America/Chicago
+  #     - PASSWORD=Simple123
+  #     - UMASK_SET=022
+  #   volumes:
+  #     - ${DATA_DIR}/nextcloud/data/luckierdodge/files/Library:/Library
+  #     - ${DATA_DIR}/calibre/config:/config
+  #     - ${MEDIA_DIR}/books:/books
+  #   ports:
+  #     - 8080:8080
+  #     - 8081:8081
+  #     - 9090:9090
+  #     - 9091:9091
+  #   restart: unless-stopped
+  #   labels:
+  #     - docker-volume-backup.stop-during-backup=true
+  # calibre-web:
+  #   image: ghcr.io/linuxserver/calibre-web
+  #   container_name: calibre-web
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=100
+  #     - TZ=America/Chicago
+  #     - DOCKER_MODS=linuxserver/calibre-web:calibre
+  #   volumes:
+  #     - ${DATA_DIR}/calibre-web/config:/config
+  #     - ${DATA_DIR}/calibre/config:/books
+  #   ports:
+  #     - 8083:8083
+  #   restart: unless-stopped
+  #   labels:
+  #     - docker-volume-backup.stop-during-backup=true
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden

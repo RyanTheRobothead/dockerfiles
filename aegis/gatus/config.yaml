@@ -1,0 +1,198 @@
+storage:
+  type: sqlite
+  path: /data/data.db
+
+alerting:
+  discord:
+    webhook-url: ${DISCORD_WEBHOOK_URL}
+    default-alert:
+      failure-threshold: 3
+      success-threshold: 2
+      send-on-resolved: true
+
+endpoints:
+  # ---------- Local aegis services ----------
+  - name: syncthing
+    group: aegis
+    url: http://aegis:8384
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: foundryvtt
+    group: aegis
+    url: http://aegis:30000
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: neofoundryvtt
+    group: aegis
+    url: http://aegis:30001
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: pihole-web
+    group: aegis
+    url: http://aegis:8880/admin/
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: pihole-dns
+    group: aegis
+    url: 8.8.8.8
+    dns:
+      query-name: example.com
+      query-type: A
+    interval: 60s
+    conditions:
+      - "[DNS_RCODE] == NOERROR"
+    alerts:
+      - type: discord
+
+  - name: scrutiny
+    group: aegis
+    url: http://aegis:8888
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: paperless
+    group: aegis
+    url: http://aegis:8000
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: plex
+    group: aegis
+    url: http://aegis:32400/web/index.html
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: jellyfin
+    group: aegis
+    url: http://aegis:8096
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: qbittorrent
+    group: aegis
+    url: http://aegis:7070
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: prowlarr
+    group: aegis
+    url: http://aegis:9696
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: vaultwarden
+    group: aegis
+    url: http://aegis:28080
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: nextcloud
+    group: aegis
+    url: tcp://aegis:21443
+    interval: 60s
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+
+  - name: immich
+    group: aegis
+    url: http://aegis:2283
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: redis
+    group: aegis
+    url: tcp://aegis:6379
+    interval: 60s
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+
+  - name: nc-postgres
+    group: aegis
+    url: tcp://aegis:5432
+    interval: 60s
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+
+  # ---------- Cross-host: cerberus services ----------
+  - name: smokeping
+    group: cerberus
+    url: http://cerberus:8888
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: librespeed
+    group: cerberus
+    url: http://cerberus:8889
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
+  - name: swag-https
+    group: cerberus
+    url: tcp://cerberus:443
+    interval: 60s
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: discord
+
+  # ---------- Home Assistant ----------
+  - name: home-assistant
+    group: home-assistant
+    url: http://homeassistant:8123
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
