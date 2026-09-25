@@ -3,8 +3,11 @@ services:
     container_name: plex
     image: plexinc/pms-docker
     restart: unless-stopped
-    ports:
-      - 32400:32400
+    # Host networking so Plex advertises its real LAN IP and GDM discovery works.
+    # On the bridge it only advertised 172.18.x, so LAN clients fell back to
+    # plex.ryandlewis.dev and hairpinned through cerberus as WAN sessions.
+    # DLNA is disabled in Plex settings, so no fight with Spotify over 1900/udp.
+    network_mode: host
     environment:
       - TZ=America/Chicago
       - PLEX_CLAIM=<https://www.plex.tv/claim>
@@ -109,17 +112,19 @@ services:
       - PUID=1000
       - PGID=100
       - TZ=America/Chicago
-      - JELLYFIN_PublishedServerUrl=jellyfin.ryandlewis.dev #optional
+      # Don't set JELLYFIN_PublishedServerUrl: it overrides PublishedServerUriBySubnet
+      # for every client, sending LAN clients out through cerberus. The LAN/public
+      # split lives in network.xml (LocalNetworkSubnets, PublishedServerUriBySubnet).
     volumes:
       - ${DATA_DIR}/jellyfin/config:/config
       - ${DOWNLOADS_DIR}/media/tv:/data/tvshows
       - ${DOWNLOADS_DIR}/media/movies:/data/movies
       - ${MEDIA_DIR_JAINA}:/data/jaina-media
-    ports:
-      - 8096:8096
-      - 8920:8920 #optional
-      - 7359:7359/udp #optional
-      #- 1900:1900/udp #optional # DLNA — conflicts with host Spotify SSDP bind
+    # Host networking (8096, 8920, 7359/udp) so Jellyfin has an interface on the
+    # LAN: PublishedServerUriBySubnet only applies a subnet override when an
+    # interface sits in that subnet, and discovery broadcasts need to reach it.
+    # No DLNA plugin installed, so nothing contends with Spotify for 1900/udp.
+    network_mode: host
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true
