@@ -4,6 +4,10 @@
   "extends": ["config:recommended", "docker:pinDigests"],
   "timezone": "America/Chicago",
   "dependencyDashboard": true,
+  "vulnerabilityAlerts": {
+    "description": "GitHub raises no alerts for container images, so there is nothing to read",
+    "enabled": false
+  },
   "packageRules": [
     {
       "description": "Batch routine updates into one weekly PR; pinning PRs are unscheduled",
