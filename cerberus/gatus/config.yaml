@@ -214,6 +214,15 @@ endpoints:
     alerts:
       - type: discord
 
+  - name: collabora
+    group: aegis
+    url: http://aegis:9980/hosting/discovery
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+    alerts:
+      - type: discord
+
   - name: immich
     group: aegis
     url: http://aegis:2283
