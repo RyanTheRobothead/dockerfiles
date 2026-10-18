@@ -88,11 +88,12 @@ services:
     restart: unless-stopped
   nc_postgres:
     container_name: nc_postgres
-    image: postgres:15
+    image: postgres:18
     restart: unless-stopped
     env_file: nextcloud_postgres.env
     volumes:
-      - ${DATA_DIR}/nc_postgres/data:/var/lib/postgresql/data
+      # Postgres 18+ keeps its data in a versioned subdirectory of this mount
+      - ${DATA_DIR}/nc_postgres/pg:/var/lib/postgresql
     labels:
       - docker-volume-backup.stop-during-backup=true
   #onlyoffice:
