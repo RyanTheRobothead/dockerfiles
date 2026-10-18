@@ -40,6 +40,10 @@ services:
     image: vaultwarden/server:latest@sha256:efb3cde962015fcc036b2ea625242248611943b27212ebf4392841fb30fad055
     container_name: vaultwarden
     env_file: vaultwarden.env
+    environment:
+      # WebAuthn binds keys to this origin; unset, it defaults to localhost
+      # and every security key registration fails
+      - DOMAIN=https://warden.ryandlewis.dev
     volumes:
       - ${DATA_DIR}/vaultwarden/data:/data
     ports:
