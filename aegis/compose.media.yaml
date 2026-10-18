@@ -29,7 +29,6 @@ services:
     container_name: sonarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     environment:
       - PUID=1000
       - PGID=100
@@ -46,7 +45,6 @@ services:
     container_name: radarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     environment:
       - PUID=1000
       - PGID=100
@@ -63,7 +61,6 @@ services:
     container_name: lidarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     environment:
       - PUID=1000
       - PGID=100
@@ -79,7 +76,6 @@ services:
     container_name: nzbget
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     environment:
       - PUID=1000
       - PGID=100
@@ -101,7 +97,6 @@ services:
       - ${DATA_DIR}/ombi/config:/config
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true
@@ -165,7 +160,6 @@ services:
   #  container_name: jackett
   #  depends_on: ["gluetun"]
   #  network_mode: service:gluetun
-  #  sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
   #  restart: no
   #  environment:
   #    - PUID=1000
@@ -180,7 +174,6 @@ services:
     container_name: prowlarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -195,7 +188,6 @@ services:
     container_name: qbittorrent
     depends_on: ["gluetun"]
     network_mode: service:gluetun
-    sysctls: ["net.ipv6.conf.all.disable_ipv6=1"]
     restart: unless-stopped
     environment:
       - PUID=1000
