@@ -1,0 +1,48 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Run by the self-hosted Renovate on Aegis (nix-config: modules/nixos/renovate.nix).",
+  "extends": ["config:recommended", "docker:pinDigests"],
+  "timezone": "America/Chicago",
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "description": "Batch routine updates into one weekly PR; pinning PRs are unscheduled",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "groupName": "weekly image updates",
+      "schedule": ["before 6am on saturday"]
+    },
+    {
+      "description": "Majors get their own PRs, also weekly",
+      "matchUpdateTypes": ["major"],
+      "schedule": ["before 6am on saturday"]
+    },
+    {
+      "description": "Server and machine learning must run the same Immich release",
+      "matchPackageNames": [
+        "ghcr.io/immich-app/immich-server",
+        "ghcr.io/immich-app/immich-machine-learning"
+      ],
+      "groupName": "immich"
+    },
+    {
+      "description": "Database majors need a dump and restore; do them by hand",
+      "matchPackageNames": [
+        "postgres",
+        "docker.io/library/postgres",
+        "ghcr.io/immich-app/postgres",
+        "docker.io/valkey/valkey",
+        "redis",
+        "docker.io/library/redis"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "The v11 Foundry server is held back on purpose",
+      "matchPackageNames": ["felddy/foundryvtt"],
+      "matchCurrentValue": "11",
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    }
+  ]
+}
