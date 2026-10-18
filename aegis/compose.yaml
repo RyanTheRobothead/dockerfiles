@@ -143,7 +143,7 @@ services:
     # release version instead of using `latest`.
     # Check https://github.com/offen/docker-volume-backup/releases
     # for a list of available releases.
-    image: offen/docker-volume-backup:v2.47.0
+    image: offen/docker-volume-backup:v2.49.1
     container_name: backup
     restart: unless-stopped
     env_file: ./backup.env # see below for configuration reference
@@ -200,7 +200,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   scrutiny:
-    image: ghcr.io/analogj/scrutiny:master-omnibus
+    image: ghcr.io/analogj/scrutiny:v0.9.5-omnibus
     container_name: scrutiny
     cap_add:
       - SYS_RAWIO
