@@ -197,7 +197,7 @@ endpoints:
 
   - name: redis
     group: aegis
-    url: tcp://aegis:6379
+    url: tcp://redis:6379
     interval: 60s
     conditions:
       - "[CONNECTED] == true"
@@ -206,7 +206,7 @@ endpoints:
 
   - name: nc-postgres
     group: aegis
-    url: tcp://aegis:5432
+    url: tcp://nc_postgres:5432
     interval: 60s
     conditions:
       - "[CONNECTED] == true"

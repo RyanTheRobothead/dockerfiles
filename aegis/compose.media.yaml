@@ -138,14 +138,22 @@ services:
     devices:
       - /dev/net/tun:/dev/net/tun
     ports:
+      # Admin UIs are tailnet-only (Aegis's Tailscale address); Ombi and the
+      # torrent port stay on every interface
       #- 9117:9117 # Jackett
-      - 7070:7070 # QBittorrent
-      - 9696:9696 # Prowlarr
+      - 100.117.195.49:7070:7070 # QBittorrent
+      - "[fd7a:115c:a1e0::b537:c331]:7070:7070"
+      - 100.117.195.49:9696:9696 # Prowlarr
+      - "[fd7a:115c:a1e0::b537:c331]:9696:9696"
       - 6881:6881 # QBittorrent Incoming Port
-      - 8989:8989 # Sonarr
-      - 7878:7878 # Radarr
-      - 8686:8686 # Lidarr
-      - 6789:6789 # Nzbget
+      - 100.117.195.49:8989:8989 # Sonarr
+      - "[fd7a:115c:a1e0::b537:c331]:8989:8989"
+      - 100.117.195.49:7878:7878 # Radarr
+      - "[fd7a:115c:a1e0::b537:c331]:7878:7878"
+      - 100.117.195.49:8686:8686 # Lidarr
+      - "[fd7a:115c:a1e0::b537:c331]:8686:8686"
+      - 100.117.195.49:6789:6789 # Nzbget
+      - "[fd7a:115c:a1e0::b537:c331]:6789:6789"
       - 3579:3579 # Ombi
     environment:
       - VPN_SERVICE_PROVIDER=protonvpn

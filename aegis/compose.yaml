@@ -124,7 +124,9 @@ services:
     ports:
       - 53:53/tcp
       - 53:53/udp
-      - 8880:80
+      # Admin UI is tailnet-only
+      - 100.117.195.49:8880:80
+      - "[fd7a:115c:a1e0::b537:c331]:8880:80"
     environment:
       - TZ=America/Chicago
     env_file: pihole.env
@@ -189,8 +191,11 @@ services:
       - ${MEDIA_DIR}:/config/workspace/media
       - ${MEDIA_DIR_JAINA}:/config/workspace/media-jaina
       - ${DOWNLOADS_DIR}:/config/workspace/downloads
+    # A shell in all but name: localhost and the tailnet only
     ports:
-      - 8443:8443
+      - 127.0.0.1:8443:8443
+      - 100.117.195.49:8443:8443
+      - "[fd7a:115c:a1e0::b537:c331]:8443:8443"
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true
