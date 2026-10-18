@@ -66,6 +66,22 @@ services:
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true
+  collabora:
+    # Nextcloud Office's editor, reached through SWAG on Cerberus as
+    # collabora.ryandlewis.dev. Standalone rather than the richdocumentscode
+    # app, which CVE-2026-110447 hit and this container is not exposed to.
+    image: collabora/code
+    container_name: collabora
+    environment:
+      - aliasgroup1=https://cloud.ryandlewis.dev:443
+      - server_name=collabora.ryandlewis.dev
+      # SWAG terminates TLS
+      - extra_params=--o:ssl.enable=false --o:ssl.termination=true
+    ports:
+      # Tailnet-only, for SWAG on Cerberus
+      - 100.117.195.49:9980:9980
+      - "[fd7a:115c:a1e0::b537:c331]:9980:9980"
+    restart: unless-stopped
   redis:
     container_name: redis
     image: redis
