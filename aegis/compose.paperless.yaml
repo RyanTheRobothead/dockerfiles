@@ -1,7 +1,7 @@
 services:
   paperless_broker:
     container_name: paperless_broker
-    image: docker.io/library/redis:7
+    image: docker.io/valkey/valkey:9-alpine
     restart: unless-stopped
     volumes:
       - ${DATA_DIR}/paperless/data/paperless_brokerdata:/data
@@ -9,10 +9,11 @@ services:
       - docker-volume-backup.stop-during-backup=true
   paperless_db:
     container_name: paperless_db
-    image: docker.io/library/postgres:15
+    image: docker.io/library/postgres:18
     restart: unless-stopped
     volumes:
-      - ${DATA_DIR}/paperless/data/paperless_pgdata:/var/lib/postgresql/data
+      # Postgres 18+ keeps its data in a versioned subdirectory of this mount
+      - ${DATA_DIR}/paperless/data/paperless_pg:/var/lib/postgresql
     env_file: paperless_db.env
     labels:
       - docker-volume-backup.stop-during-backup=true
@@ -48,14 +49,14 @@ services:
       - docker-volume-backup.stop-during-backup=true
   gotenberg:
     container_name: gotenberg
-    image: docker.io/gotenberg/gotenberg:7.8
+    image: docker.io/gotenberg/gotenberg:8.38
     restart: unless-stopped
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
     command:
       - "gotenberg"
       - "--chromium-disable-javascript=true"
-      - "--chromium-allow-list=file:///tmp/.*"
+      - "--chromium-allow-list=^file:///tmp/.*"
   tika:
     container_name: tika
     image: docker.io/apache/tika:latest
