@@ -51,6 +51,9 @@ services:
   nextcloud:
     image: ghcr.io/linuxserver/nextcloud
     container_name: nextcloud
+    # Lets php-fpm's slowlog ptrace its workers for stack traces.
+    cap_add:
+      - SYS_PTRACE
     environment:
       - PUID=1000
       - PGID=100
