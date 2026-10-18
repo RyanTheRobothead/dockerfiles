@@ -1,7 +1,7 @@
 services:
   plex:
     container_name: plex
-    image: plexinc/pms-docker
+    image: plexinc/pms-docker@sha256:e0ab27395614a8e1a4fdf84c6bc60ac664915cfdde70c52d030c7728a1c48e14
     restart: unless-stopped
     # Host networking so Plex advertises its real LAN IP and GDM discovery works.
     # On the bridge it only advertised 172.18.x, so LAN clients fell back to
@@ -25,7 +25,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   sonarr:
-    image: linuxserver/sonarr
+    image: linuxserver/sonarr@sha256:44b06045a98bc1f237b9ffefc4b28dab64cb29305e4a2a94875ae93b5224e4cc
     container_name: sonarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -41,7 +41,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   radarr:
-    image: linuxserver/radarr
+    image: linuxserver/radarr@sha256:ea6822c956d26db648b237919f41340318f32e5b7dcc4ba702cf256a0f5f3c12
     container_name: radarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -57,7 +57,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest
+    image: lscr.io/linuxserver/lidarr:latest@sha256:67887807b13ae025c0fe979da298347c8609969087ab064c81d8e9acc1e06bbf
     container_name: lidarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -72,7 +72,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   nzbget:
-    image: lscr.io/linuxserver/nzbget
+    image: lscr.io/linuxserver/nzbget@sha256:ab18af1d16027fdf870fc58a39bbc764043b16e9220e06b9d0413e8b56bd622b
     container_name: nzbget
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -87,7 +87,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   ombi:
-    image: ghcr.io/linuxserver/ombi
+    image: ghcr.io/linuxserver/ombi@sha256:ea8248433a3d37eaf46a59e4cb5160814d35a5b5ba35eac47a5018747acf2632
     container_name: ombi
     environment:
       - PUID=1000
@@ -101,7 +101,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:799509f8ef3be7037478699cc6fd14d19dd75faac5e474ed219e98ae78a5b3e4
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -124,7 +124,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   gluetun:
-    image: qmcgaw/gluetun
+    image: qmcgaw/gluetun@sha256:945d325be5c2abe50b89c84791b51a4e3d039737ed3703b2482c1e2b396e8fbe
     container_name: gluetun
     restart: unless-stopped
     env_file: ./gluetun.env
@@ -170,7 +170,7 @@ services:
   #    - /etc/localtime:/etc/localtime:ro
   #    - ${DATA_DIR}/jackett/config:/config:z
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:f9151e5bc1025c6d0a630d503210cdcb6bb55a7cc098562609d96a408d838902
     container_name: prowlarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -184,7 +184,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   qbittorrent:
-    image: linuxserver/qbittorrent
+    image: linuxserver/qbittorrent@sha256:1ea873647c43d566f251a7122aee330b184509c57ee3257ed19f62dac0f8f24b
     container_name: qbittorrent
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -206,7 +206,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   audiobookshelf:
     container_name: audiobookshelf
-    image: ghcr.io/advplyr/audiobookshelf:latest
+    image: ghcr.io/advplyr/audiobookshelf:latest@sha256:581d68b2a6fc7ebf58d81c878a9f387cbbc0d88ac9d37b298b9cee10168af85b
     ports:
       - 13378:80
     volumes:
