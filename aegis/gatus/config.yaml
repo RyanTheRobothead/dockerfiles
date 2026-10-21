@@ -204,6 +204,18 @@ endpoints:
     alerts:
       - type: discord
 
+  # NixOS service, not a container: modules/nixos/schedule-bot.nix in nix-config.
+  # 503 means it's lost its Discord connection.
+  - name: schedule-bot
+    group: aegis
+    url: http://aegis:8095/health
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].ok == true"
+    alerts:
+      - type: discord
+
   - name: redis
     group: aegis
     url: tcp://redis:6379
