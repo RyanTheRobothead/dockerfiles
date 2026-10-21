@@ -62,7 +62,9 @@ services:
     restart: unless-stopped
     env_file: ./gatus.env
     ports:
-      - 8090:8080
+      # Tailnet-only: nothing needs the status page from the internet
+      - 100.93.94.128:8090:8080
+      - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8090:8080"
     volumes:
       - ./gatus/config.yaml:/config/config.yaml:ro
       - /home/luckierdodge/cerberus-storage/data/gatus/data:/data
