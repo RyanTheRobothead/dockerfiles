@@ -21,7 +21,9 @@ services:
       - /home/luckierdodge/cerberus-storage/config/smokeping/config:/config
       - /home/luckierdodge/cerberus-storage/data/smokeping/data:/data
     ports:
-      - 8888:80
+      # Tailnet-only: nothing needs the latency graphs from the internet
+      - 100.93.94.128:8888:80
+      - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8888:80"
     restart: unless-stopped
   swag:
     image: linuxserver/swag@sha256:a2d5e3c41b9bb57e4717113b471109f9f9cca103e38ad6f19ee0fe46f4d27e75
@@ -62,7 +64,9 @@ services:
     restart: unless-stopped
     env_file: ./gatus.env
     ports:
-      - 8090:8080
+      # Tailnet-only: nothing needs the status page from the internet
+      - 100.93.94.128:8090:8080
+      - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8090:8080"
     volumes:
       - ./gatus/config.yaml:/config/config.yaml:ro
       - /home/luckierdodge/cerberus-storage/data/gatus/data:/data
