@@ -53,7 +53,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   nextcloud:
-    image: ghcr.io/linuxserver/nextcloud@sha256:84205b9623211afb0d8d4493204236258606ff58e767ac017b1750e4eb715e3b
+    image: ghcr.io/linuxserver/nextcloud@sha256:e7f790011bf023d33517b4be70231d7aa2e19d54c619664a8533e8bedd4716ac
     container_name: nextcloud
     # Lets php-fpm's slowlog ptrace its workers for stack traces.
     cap_add:
@@ -88,11 +88,11 @@ services:
     restart: unless-stopped
   redis:
     container_name: redis
-    image: redis@sha256:2c2dff791878316e3b083188be0d578423b24813cdda5de0e80ea4f7b3e6bfd6
+    image: redis@sha256:97ec88159e6d7cfb5ddef9015386087d58a912de80112f06ebdfa78fa5989901
     restart: unless-stopped
   nc_postgres:
     container_name: nc_postgres
-    image: postgres:18@sha256:74935e72241653ca55e0414067e6d8763aceb8a810eb51b452253ec3dcfc4336
+    image: postgres:18@sha256:edb0c08dc33befd0262ab3b5cf1c4f3f8cfd8b09e88c05b45adee29d6761ddb6
     restart: unless-stopped
     env_file: nextcloud_postgres.env
     volumes:
