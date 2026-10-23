@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:e8ab7f76d0aaace1062278ca5d5bea65e5b12af8dd0cc663d7af8e8641d0d37e
+    image: willfarrell/autoheal@sha256:5faf6731257cd57316c2863e40b56bbd148760e867ac689311c08924a266312c
     restart: unless-stopped
     network_mode: host
     environment:
@@ -76,7 +76,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   syncthing:
-    image: lscr.io/linuxserver/syncthing:latest@sha256:122a5e733332c20bfd516d88cd38d7d973c3dad52c52a389d992651acc074df5
+    image: lscr.io/linuxserver/syncthing:latest@sha256:92fd6eb29759439225c166a3fc0e6b9500208b8d617a6fd0ae67cc125d1b1b86
     container_name: syncthing
     hostname: aegis_sync #optional
     environment:
@@ -143,7 +143,7 @@ services:
     # release version instead of using `latest`.
     # Check https://github.com/offen/docker-volume-backup/releases
     # for a list of available releases.
-    image: offen/docker-volume-backup:v2.49.1@sha256:e1da571e739d73f633f19e7a9f324007907089ffd80b3b7a1d71de5b87f80d77
+    image: offen/docker-volume-backup:v2.49.3@sha256:570a4bea8c19f824b22a4ce31e01afdf418a7bb616dcb17052f0a78b504ac54c
     container_name: backup
     restart: unless-stopped
     env_file: ./backup.env # see below for configuration reference
@@ -174,7 +174,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   code-server:
-    image: lscr.io/linuxserver/code-server:latest@sha256:7b0db7a7f6237df21199a4e3ca06575803c718255418eaa95166604a79ddf582
+    image: lscr.io/linuxserver/code-server:latest@sha256:05e7025352fc8a8cdfbce07bf80c26c6dc7a0d1f1e99b2bb5e19b6a98d559897
     container_name: code-server
     environment:
       - PUID=1000
