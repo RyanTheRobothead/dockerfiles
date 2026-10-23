@@ -1,13 +1,25 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Run by the self-hosted Renovate on Aegis (nix-config: modules/nixos/renovate.nix).",
-  "extends": ["config:recommended", "docker:pinDigests"],
+  "extends": ["config:recommended", "docker:pinDigests", "helpers:pinGitHubActionDigests"],
   "timezone": "America/Chicago",
   "dependencyDashboard": true,
   "vulnerabilityAlerts": {
     "description": "GitHub raises no alerts for container images, so there is nothing to read",
     "enabled": false
   },
+  "customManagers": [
+    {
+      "description": "The nixpkgs revision the image CVE diff workflow takes Grype from",
+      "customType": "regex",
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/"],
+      "matchStrings": ["github:NixOS/nixpkgs/(?<currentDigest>[0-9a-f]{40})"],
+      "depNameTemplate": "nixpkgs",
+      "packageNameTemplate": "https://github.com/NixOS/nixpkgs",
+      "currentValueTemplate": "nixos-26.05",
+      "datasourceTemplate": "git-refs"
+    }
+  ],
   "packageRules": [
     {
       "description": "Batch routine updates into one weekly PR; pinning PRs are unscheduled",
