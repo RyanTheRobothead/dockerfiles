@@ -4,6 +4,7 @@
   "extends": ["config:recommended", "docker:pinDigests", "helpers:pinGitHubActionDigests"],
   "timezone": "America/Chicago",
   "dependencyDashboard": true,
+  "prHourlyLimit": 0,
   "vulnerabilityAlerts": {
     "description": "GitHub raises no alerts for container images, so there is nothing to read",
     "enabled": false
