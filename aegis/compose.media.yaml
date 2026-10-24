@@ -25,7 +25,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   sonarr:
-    image: linuxserver/sonarr@sha256:889dcc58c6aea859033985894b519b2e6b1e55d92527ed123f9f52e42ae7c97b
+    image: linuxserver/sonarr@sha256:48e36b608b461273b9dae857725cd0561a127f2c694b687318f6d0c5ce63e5c9
     container_name: sonarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -72,7 +72,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   nzbget:
-    image: lscr.io/linuxserver/nzbget@sha256:ab18af1d16027fdf870fc58a39bbc764043b16e9220e06b9d0413e8b56bd622b
+    image: lscr.io/linuxserver/nzbget@sha256:631a76760263014e846a3f1ddeaba789a103dea27c9f131846bdd8b39c281efd
     container_name: nzbget
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -101,7 +101,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:38f6ad3bcd487c82933ede7e32d74ab8712fffcff9e87b16dd2e245ab37130f8
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:4212ca390fbc6bd5002048d2d2ce2b8a5b1ad278ec4cbabe6519869117404308
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -206,7 +206,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   audiobookshelf:
     container_name: audiobookshelf
-    image: ghcr.io/advplyr/audiobookshelf:latest@sha256:581d68b2a6fc7ebf58d81c878a9f387cbbc0d88ac9d37b298b9cee10168af85b
+    image: ghcr.io/advplyr/audiobookshelf:latest@sha256:b897c33f05972fb1bf484f7487bc878fa91ec8691335c1db6e2929c3a7658efa
     ports:
       - 13378:80
     volumes:

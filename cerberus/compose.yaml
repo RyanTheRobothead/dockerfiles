@@ -1,7 +1,7 @@
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:5faf6731257cd57316c2863e40b56bbd148760e867ac689311c08924a266312c
+    image: willfarrell/autoheal@sha256:bee51452917d535d4072a6cc1f8d02153c6ed5d5d642e6f64d33353574696783
     restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
