@@ -1,7 +1,7 @@
 services:
   paperless_broker:
     container_name: paperless_broker
-    image: docker.io/valkey/valkey:9-alpine@sha256:48332870af354a799964c0012ae1194a0bf2bf894eb508f945810596dc2d8d11
+    image: docker.io/valkey/valkey:9-alpine@sha256:bf09d58e96d6b4524a15396b65b242bbe18beebbcc15a04d8ee75ddac62fae0b
     restart: unless-stopped
     volumes:
       - ${DATA_DIR}/paperless/data/paperless_brokerdata:/data
@@ -9,7 +9,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   paperless_db:
     container_name: paperless_db
-    image: docker.io/library/postgres:18@sha256:edb0c08dc33befd0262ab3b5cf1c4f3f8cfd8b09e88c05b45adee29d6761ddb6
+    image: docker.io/library/postgres:18@sha256:979bccfde35445db618c65107d27d08c6c21339d8dc3ad4c830c6633947be0e4
     restart: unless-stopped
     volumes:
       # Postgres 18+ keeps its data in a versioned subdirectory of this mount
@@ -19,7 +19,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   paperless_webserver:
     container_name: paperless_webserver
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest@sha256:9bc6e8248891bcfa6f52fffe8b81e4ea8cae75790c3ec1b9906961a7ba55c969
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest@sha256:1a08d8dfc2b51a08de09652dd86ad4d0c611c362382f944533ad38b73125fbc4
     restart: unless-stopped
     depends_on:
       - paperless_db
@@ -49,7 +49,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   gotenberg:
     container_name: gotenberg
-    image: docker.io/gotenberg/gotenberg:8.38@sha256:aa552cc115db488e0f0bcb07446aac13071ad51505b642c84bb894500907b42b
+    image: docker.io/gotenberg/gotenberg:8.39@sha256:13672f317b443c793e972b1bd2155ec62a3e7b6891b411e8196442cc053ee5f5
     restart: unless-stopped
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
@@ -59,5 +59,5 @@ services:
       - "--chromium-allow-list=^file:///tmp/.*"
   tika:
     container_name: tika
-    image: docker.io/apache/tika:latest@sha256:fe2c6e3fca77b986ff3368107a20fa5060a3eefd03d14c12b45c0334626335d2
+    image: docker.io/apache/tika:latest@sha256:b99f19c4fd76237dafe7d22f719b9bddfa9a449da687c597a41e2f6d9a595418
     restart: unless-stopped

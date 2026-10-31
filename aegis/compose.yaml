@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:bee51452917d535d4072a6cc1f8d02153c6ed5d5d642e6f64d33353574696783
+    image: willfarrell/autoheal@sha256:53320121f32db551b8e19cdd5ff28eb1e5cece62845cc46683d4479b6a58b77e
     restart: unless-stopped
     network_mode: host
     environment:
@@ -76,7 +76,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   syncthing:
-    image: lscr.io/linuxserver/syncthing:latest@sha256:6dadb221ef64ce50fa5121120da316486c6feeb9f93d279ef8df198520203ddb
+    image: lscr.io/linuxserver/syncthing:latest@sha256:5c1276a655498fb9774e22e42ceeb5279eb2d7c46e3c209ce8285a7b0bae4925
     container_name: syncthing
     hostname: aegis_sync #optional
     environment:
@@ -119,7 +119,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   pihole:
     container_name: pihole
-    image: pihole/pihole:latest@sha256:d34134716fc32038b052a8674c7c6879e0ff21f0e6d8af345166fffa2c27c113
+    image: pihole/pihole:latest@sha256:30f803ad5dd60ff96cc0a63008a2e9271af481c1b0399a182192b2e91152c1f9
     restart: unless-stopped
     ports:
       - 53:53/tcp
@@ -143,7 +143,7 @@ services:
     # release version instead of using `latest`.
     # Check https://github.com/offen/docker-volume-backup/releases
     # for a list of available releases.
-    image: offen/docker-volume-backup:v2.49.3@sha256:570a4bea8c19f824b22a4ce31e01afdf418a7bb616dcb17052f0a78b504ac54c
+    image: offen/docker-volume-backup:v2.50.1@sha256:06fccb4c6ff79c4d5e4a839ace17c174da82a9327f43594f8a2c6a15f43bc660
     container_name: backup
     restart: unless-stopped
     env_file: ./backup.env # see below for configuration reference
@@ -174,7 +174,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   code-server:
-    image: lscr.io/linuxserver/code-server:latest@sha256:4524d0b00478e41264f42e0e660c1819e3b7d0c460f78ce73e44fa39b2b55134
+    image: lscr.io/linuxserver/code-server:latest@sha256:ec8f01d91c93a5d615224a306914c3ea9190c6237f876383591bca676a24fa67
     container_name: code-server
     environment:
       - PUID=1000
