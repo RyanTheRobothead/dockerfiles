@@ -23,15 +23,9 @@
   ],
   "packageRules": [
     {
-      "description": "Batch routine updates into one weekly PR; pinning PRs are unscheduled",
+      "description": "Batch routine updates into one PR, kept current by every daily run; majors get their own",
       "matchUpdateTypes": ["minor", "patch", "digest"],
-      "groupName": "weekly image updates",
-      "schedule": ["before 6am on saturday"]
-    },
-    {
-      "description": "Majors get their own PRs, also weekly",
-      "matchUpdateTypes": ["major"],
-      "schedule": ["before 6am on saturday"]
+      "groupName": "image updates"
     },
     {
       "description": "Server and machine learning must run the same Immich release",
