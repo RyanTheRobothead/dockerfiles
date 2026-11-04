@@ -9,7 +9,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   paperless_db:
     container_name: paperless_db
-    image: docker.io/library/postgres:18@sha256:979bccfde35445db618c65107d27d08c6c21339d8dc3ad4c830c6633947be0e4
+    image: docker.io/library/postgres:18@sha256:3a4264520e121176619f54ff867d12774bc81e95e7b84db58d63bccdb6144b81
     restart: unless-stopped
     volumes:
       # Postgres 18+ keeps its data in a versioned subdirectory of this mount
@@ -19,7 +19,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   paperless_webserver:
     container_name: paperless_webserver
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest@sha256:1a08d8dfc2b51a08de09652dd86ad4d0c611c362382f944533ad38b73125fbc4
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest@sha256:d704e84f88300eb6ab001ab15720a2330ff99169cf9f94d6b8fcc44b63a84c84
     restart: unless-stopped
     depends_on:
       - paperless_db
