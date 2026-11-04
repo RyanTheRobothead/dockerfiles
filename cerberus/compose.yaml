@@ -1,7 +1,7 @@
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:53320121f32db551b8e19cdd5ff28eb1e5cece62845cc46683d4479b6a58b77e
+    image: willfarrell/autoheal@sha256:221c1c842f59ff74ac332b38a2f79e3fc3cf93fc2af453e15ed24e9605010326
     restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
@@ -11,7 +11,7 @@ services:
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
   smokeping:
-    image: ghcr.io/linuxserver/smokeping@sha256:6861c15df8151c454ed09da610b64c86bc274748e664f53f3e15ec1a3cd45431
+    image: ghcr.io/linuxserver/smokeping@sha256:0120aaf92cdc369e79fac21942fe02fca615aeb6e99541b926f53ec82b91ecfc
     container_name: smokeping
     environment: 
       - PUID=1000
@@ -26,7 +26,7 @@ services:
       - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8888:80"
     restart: unless-stopped
   swag:
-    image: linuxserver/swag@sha256:c9128fa608b31698327375406402d426258ff7bcd57871f119341e20761eb828
+    image: linuxserver/swag@sha256:f07aebcb17fca6e7c5524773d8212cf52cccb5e8f739df4f043141d15e6a693c
     container_name: swag
     cap_add:
       - NET_ADMIN
@@ -46,7 +46,7 @@ services:
       - 80:80
     restart: unless-stopped
   librespeed:
-    image: lscr.io/linuxserver/librespeed:latest@sha256:8f383ce2954aca618347387e255769b9a927c549daa3f29c12a18b418acb5193
+    image: lscr.io/linuxserver/librespeed:latest@sha256:16a2c6a6ba7d60d825d73c682ba3036ca3877fe34f73dab9c88854bc099e1164
     container_name: librespeed
     environment:
       - PUID=1000
@@ -61,7 +61,7 @@ services:
       - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8889:80"
     restart: unless-stopped
   gatus:
-    image: twinproduction/gatus:latest@sha256:085ed63da963728965d00a3c78aa6167e3bf135218485b893201758e079e8415
+    image: twinproduction/gatus:latest@sha256:375c7365d2a89506da18b8a2540a383f5af0858a1eeeb5495151bf97b17b42f3
     container_name: gatus
     restart: unless-stopped
     env_file: ./gatus.env

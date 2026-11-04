@@ -41,7 +41,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   radarr:
-    image: linuxserver/radarr@sha256:084b3b2ab1d0ef930660727259546a241f2bdf67c9ed085d54bf1486a6887c9b
+    image: linuxserver/radarr@sha256:ade5937813c6ae415b29db729386e53fea3ecf067a019849bafbe2d2a6ec02ba
     container_name: radarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -57,7 +57,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest@sha256:9fddcf5c613361edfce390d4e6b7c364282e71e90a40ce7793077fed788f6e63
+    image: lscr.io/linuxserver/lidarr:latest@sha256:d5707cfe084da21a3864c7ef0edd9c0543b5e26c79c551f84dad5ef8683af8c7
     container_name: lidarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -87,7 +87,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   ombi:
-    image: ghcr.io/linuxserver/ombi@sha256:19d4f86713e7203d910b4aa431d7176e7a9a22f641beb1047da45aa989296509
+    image: ghcr.io/linuxserver/ombi@sha256:cdff52cca1c613aaf67e72bf36de5ea8486fa43fe2c2b7e2dd3368d6a80510d7
     container_name: ombi
     environment:
       - PUID=1000
@@ -101,7 +101,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:3894d9eae88418d3cf9ac6349392d2c4dad818365a59565d19edc38098897044
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:b7eabe1f098f4e850bfd63d6721369117195410a471db1a41748ab768b81a639
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -184,7 +184,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   qbittorrent:
-    image: linuxserver/qbittorrent@sha256:75ecbb1c89ab7b0a21c4bde40b4820e4f1649d2d56d83b91913422155e8d2a5f
+    image: linuxserver/qbittorrent@sha256:05c1454f9a32967affc1f34f67f8cc0cc57dd805dca45489fe797095a6286556
     container_name: qbittorrent
     depends_on: ["gluetun"]
     network_mode: service:gluetun

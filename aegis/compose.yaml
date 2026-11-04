@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:53320121f32db551b8e19cdd5ff28eb1e5cece62845cc46683d4479b6a58b77e
+    image: willfarrell/autoheal@sha256:221c1c842f59ff74ac332b38a2f79e3fc3cf93fc2af453e15ed24e9605010326
     restart: unless-stopped
     network_mode: host
     environment:
@@ -200,7 +200,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   scrutiny:
-    image: ghcr.io/analogj/scrutiny:v0.9.5-omnibus@sha256:6ee271ee531458f134220ca8b2c5c8ccc2711a799c827fef953fa865d91e312f
+    image: ghcr.io/analogj/scrutiny:v0.10.0-omnibus@sha256:90062edac57a2bd891d641344184f5f730f19394b1124f6fc53904a3d8cb21c2
     container_name: scrutiny
     cap_add:
       - SYS_RAWIO
