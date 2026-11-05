@@ -88,11 +88,11 @@ services:
     restart: unless-stopped
   redis:
     container_name: redis
-    image: redis@sha256:de1068af6f552240dfab67bcc9bfef99bfc60f776bb4580ef077ea4c8c97e848
+    image: redis@sha256:6169dabab9f4050073203cf18517e83848f0f475b066992ebf90d38089e7ed7c
     restart: unless-stopped
   nc_postgres:
     container_name: nc_postgres
-    image: postgres:18@sha256:3a4264520e121176619f54ff867d12774bc81e95e7b84db58d63bccdb6144b81
+    image: postgres:18@sha256:6d732ddbc9cca651c7cbda3f2b84bc515c6d09de796204176c9e312ce8069c6c
     restart: unless-stopped
     env_file: nextcloud_postgres.env
     volumes:
