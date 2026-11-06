@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:221c1c842f59ff74ac332b38a2f79e3fc3cf93fc2af453e15ed24e9605010326
+    image: willfarrell/autoheal@sha256:2fb036bb6d0bcd4d7ff8408a86d60b0703fa610cc645cacd742f2f3bb1a7e124
     restart: unless-stopped
     network_mode: host
     environment:
@@ -174,7 +174,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   code-server:
-    image: lscr.io/linuxserver/code-server:latest@sha256:ec8f01d91c93a5d615224a306914c3ea9190c6237f876383591bca676a24fa67
+    image: lscr.io/linuxserver/code-server:latest@sha256:ff177967985ed52bca9ecca00225110719e48ce6275117319493b69bc72e9015
     container_name: code-server
     environment:
       - PUID=1000
