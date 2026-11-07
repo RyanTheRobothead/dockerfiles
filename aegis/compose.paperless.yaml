@@ -27,7 +27,8 @@ services:
       - gotenberg
       - tika
     ports:
-      - "8000:8000"
+      - 100.117.195.49:8000:8000
+      - "[fd7a:115c:a1e0::b537:c331]:8000:8000"
     healthcheck:
       test: ["CMD", "curl", "-fs", "-S", "--max-time", "2", "http://localhost:8000"]
       interval: 30s

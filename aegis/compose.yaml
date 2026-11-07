@@ -87,10 +87,14 @@ services:
       - ${DATA_DIR}/syncthing/config:/config
       - ${DATA_DIR}/syncthing/data:/data
     ports:
-      - 8384:8384
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp
+      - 100.117.195.49:8384:8384
+      - "[fd7a:115c:a1e0::b537:c331]:8384:8384"
+      - 100.117.195.49:22000:22000/tcp
+      - "[fd7a:115c:a1e0::b537:c331]:22000:22000/tcp"
+      - 100.117.195.49:22000:22000/udp
+      - "[fd7a:115c:a1e0::b537:c331]:22000:22000/udp"
+      - 100.117.195.49:21027:21027/udp
+      - "[fd7a:115c:a1e0::b537:c331]:21027:21027/udp"
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true
@@ -100,7 +104,8 @@ services:
     volumes:
       - ${DATA_DIR}/foundryvtt/data:/data
     ports:
-      - 30000:30000
+      - 100.117.195.49:30000:30000
+      - "[fd7a:115c:a1e0::b537:c331]:30000:30000"
     restart: unless-stopped
     env_file: foundryvtt.env
     labels:
@@ -112,7 +117,8 @@ services:
       - ${DATA_DIR}/neofoundryvtt/data:/data
     user: 1000:100
     ports:
-      - 30001:30000
+      - 100.117.195.49:30001:30000
+      - "[fd7a:115c:a1e0::b537:c331]:30001:30000"
     restart: unless-stopped
     env_file: neofoundryvtt.env
     labels:
@@ -217,7 +223,8 @@ services:
       - ${DATA_DIR}/scrutiny/influxdb2:/opt/scrutiny/influxdb
       - /run/udev:/run/udev:ro
     ports:
-      - 8888:8080
+      - 100.117.195.49:8888:8080
+      - "[fd7a:115c:a1e0::b537:c331]:8888:8080"
     devices:
       - /dev/nvme0:/dev/nvme0
       - /dev/sda:/dev/sda
