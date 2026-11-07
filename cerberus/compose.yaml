@@ -1,7 +1,7 @@
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:2fb036bb6d0bcd4d7ff8408a86d60b0703fa610cc645cacd742f2f3bb1a7e124
+    image: willfarrell/autoheal@sha256:b1517815087f04edd0b0c103d6df4ac5c4d6f22db5c62e32949e135a25f1d945
     restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
@@ -26,7 +26,7 @@ services:
       - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8888:80"
     restart: unless-stopped
   swag:
-    image: linuxserver/swag@sha256:f07aebcb17fca6e7c5524773d8212cf52cccb5e8f739df4f043141d15e6a693c
+    image: linuxserver/swag@sha256:f61b985594855a3fc76f6f42d1328bf8713120d6261d2e613e9a81033887cbcc
     container_name: swag
     cap_add:
       - NET_ADMIN
@@ -61,7 +61,7 @@ services:
       - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8889:80"
     restart: unless-stopped
   gatus:
-    image: twinproduction/gatus:latest@sha256:375c7365d2a89506da18b8a2540a383f5af0858a1eeeb5495151bf97b17b42f3
+    image: twinproduction/gatus:latest@sha256:0a8565a61a3c10c9ae622999f576eb2b5be512ca5fdd17de776cb4bfc0160ff2
     container_name: gatus
     restart: unless-stopped
     env_file: ./gatus.env

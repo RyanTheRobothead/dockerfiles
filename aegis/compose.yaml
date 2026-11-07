@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:2fb036bb6d0bcd4d7ff8408a86d60b0703fa610cc645cacd742f2f3bb1a7e124
+    image: willfarrell/autoheal@sha256:b1517815087f04edd0b0c103d6df4ac5c4d6f22db5c62e32949e135a25f1d945
     restart: unless-stopped
     network_mode: host
     environment:
@@ -76,7 +76,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   syncthing:
-    image: lscr.io/linuxserver/syncthing:latest@sha256:5c1276a655498fb9774e22e42ceeb5279eb2d7c46e3c209ce8285a7b0bae4925
+    image: lscr.io/linuxserver/syncthing:latest@sha256:e02e82c1d1f04085b2d9179c2ab1c8367835fdda64e875bd12dfe502061cf302
     container_name: syncthing
     hostname: aegis_sync #optional
     environment:
@@ -106,7 +106,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   neofoundryvtt:
-    image: felddy/foundryvtt:14@sha256:2ddf90080c605ebafaaabc4fbfb6bea3cc84d20ad181ce39420e4f86e664a484
+    image: felddy/foundryvtt:14@sha256:24af7e8a402291d3b54443dc7266f6a8fe4a792553171c1a076e1290abda9b53
     container_name: neofoundryvtt
     volumes:
       - ${DATA_DIR}/neofoundryvtt/data:/data
@@ -174,7 +174,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   code-server:
-    image: lscr.io/linuxserver/code-server:latest@sha256:ff177967985ed52bca9ecca00225110719e48ce6275117319493b69bc72e9015
+    image: lscr.io/linuxserver/code-server:latest@sha256:29f84131fa023c006fcfea9afbf0a5f9959c1a0532cf865d8dc8dae69e3c4a17
     container_name: code-server
     environment:
       - PUID=1000
