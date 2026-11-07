@@ -4,7 +4,8 @@ services:
     container_name: homepage
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 100.117.195.49:3000:3000
+      - "[fd7a:115c:a1e0::b537:c331]:3000:3000"
     environment:
       - TZ=America/Chicago
       - HOMEPAGE_ALLOWED_HOSTS=aegis:3000,localhost:3000

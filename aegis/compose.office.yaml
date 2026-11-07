@@ -47,8 +47,10 @@ services:
     volumes:
       - ${DATA_DIR}/vaultwarden/data:/data
     ports:
-      - 28080:80
-      - 23012:3012
+      - 100.117.195.49:28080:80
+      - "[fd7a:115c:a1e0::b537:c331]:28080:80"
+      - 100.117.195.49:23012:3012
+      - "[fd7a:115c:a1e0::b537:c331]:23012:3012"
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true
@@ -66,7 +68,8 @@ services:
       - ${DATA_DIR}/nextcloud/config:/config
       - ${DATA_DIR}/nextcloud/data:/data
     ports:
-      - 21443:443
+      - 100.117.195.49:21443:443
+      - "[fd7a:115c:a1e0::b537:c331]:21443:443"
     restart: unless-stopped
     labels:
       - docker-volume-backup.stop-during-backup=true

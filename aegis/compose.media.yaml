@@ -140,7 +140,8 @@ services:
       - "[fd7a:115c:a1e0::b537:c331]:7070:7070"
       - 100.117.195.49:9696:9696 # Prowlarr
       - "[fd7a:115c:a1e0::b537:c331]:9696:9696"
-      - 6881:6881 # QBittorrent Incoming Port
+      - 100.117.195.49:6881:6881 # QBittorrent Incoming Port
+      - "[fd7a:115c:a1e0::b537:c331]:6881:6881"
       - 100.117.195.49:8989:8989 # Sonarr
       - "[fd7a:115c:a1e0::b537:c331]:8989:8989"
       - 100.117.195.49:7878:7878 # Radarr
@@ -149,7 +150,8 @@ services:
       - "[fd7a:115c:a1e0::b537:c331]:8686:8686"
       - 100.117.195.49:6789:6789 # Nzbget
       - "[fd7a:115c:a1e0::b537:c331]:6789:6789"
-      - 3579:3579 # Ombi
+      - 100.117.195.49:3579:3579 # Ombi
+      - "[fd7a:115c:a1e0::b537:c331]:3579:3579"
     environment:
       - VPN_SERVICE_PROVIDER=protonvpn
       - VPN_TYPE=wireguard
@@ -208,7 +210,8 @@ services:
     container_name: audiobookshelf
     image: ghcr.io/advplyr/audiobookshelf:latest@sha256:b897c33f05972fb1bf484f7487bc878fa91ec8691335c1db6e2929c3a7658efa
     ports:
-      - 13378:80
+      - 100.117.195.49:13378:80
+      - "[fd7a:115c:a1e0::b537:c331]:13378:80"
     volumes:
       # These volumes are needed to keep your library persistent
       # and allow media to be accessed by the ABS server.
