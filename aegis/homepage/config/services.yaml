@@ -123,16 +123,16 @@
         container: scrutiny
         server: my-docker
         description: Drive health monitoring
+    - Gatus:
+        href: http://sleeperservice:8080
+        icon: gatus.png
+        description: Uptime monitoring of Aegis and the public sites
     - Gatus (Aegis):
         href: http://aegis:8090
         icon: gatus.png
         container: gatus
         server: my-docker
-        description: Uptime monitoring
-    - Gatus (Cerberus):
-        href: http://cerberus:8090
-        icon: gatus.png
-        description: Uptime monitoring
+        description: Watches SleeperService
 
 - Cerberus:
     - Smokeping:

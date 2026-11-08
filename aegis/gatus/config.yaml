@@ -1,3 +1,8 @@
+# Aegis's Gatus watches SleeperService, which runs the main Gatus and ntfy
+# (nix-config modules/infra/gatus.nix, ntfy.nix). When SleeperService is
+# down, ntfy is down with it, so this one alerts through Discord. It also
+# keeps the checks only a container on Aegis's Docker network can make.
+
 storage:
   type: sqlite
   path: /data/data.db
@@ -11,211 +16,45 @@ alerting:
       send-on-resolved: true
 
 endpoints:
-  # ---------- Local aegis services ----------
-  - name: syncthing
-    group: aegis
-    url: http://aegis:8384
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: foundryvtt
-    group: aegis
-    url: http://aegis:30000
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: neofoundryvtt
-    group: aegis
-    url: http://aegis:30001
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: pihole-web
-    group: aegis
-    url: http://aegis:8880/admin/
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: pihole-dns
-    group: aegis
-    url: 8.8.8.8
-    dns:
-      query-name: example.com
-      query-type: A
-    interval: 60s
-    conditions:
-      - "[DNS_RCODE] == NOERROR"
-    alerts:
-      - type: discord
-
-  - name: scrutiny
-    group: aegis
-    url: http://aegis:8888
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: paperless
-    group: aegis
-    url: http://aegis:8000
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: plex
-    group: aegis
-    url: http://aegis:32400/web/index.html
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: jellyfin
-    group: aegis
-    url: http://aegis:8096
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: audiobookshelf
-    group: aegis
-    url: http://aegis:13378
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: qbittorrent
-    group: aegis
-    url: http://aegis:7070
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: sonarr
-    group: aegis
-    url: http://aegis:8989
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: radarr
-    group: aegis
-    url: http://aegis:7878
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: lidarr
-    group: aegis
-    url: http://aegis:8686
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: nzbget
-    group: aegis
-    url: http://aegis:6789
-    interval: 60s
-    conditions:
-      - "[STATUS] < 500"
-    alerts:
-      - type: discord
-
-  - name: ombi
-    group: aegis
-    url: http://aegis:3579
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: prowlarr
-    group: aegis
-    url: http://aegis:9696
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: vaultwarden
-    group: aegis
-    url: http://aegis:28080
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: nextcloud
-    group: aegis
-    url: tcp://aegis:21443
+  # ---------- SleeperService, over the tailnet and from outside ----------
+  - name: ssh
+    group: sleeperservice
+    url: tcp://sleeperservice:22
     interval: 60s
     conditions:
       - "[CONNECTED] == true"
     alerts:
       - type: discord
 
-  - name: collabora
-    group: aegis
-    url: http://aegis:9980/hosting/discovery
+  - name: gatus
+    group: sleeperservice
+    url: http://sleeperservice:8080/health
     interval: 60s
     conditions:
       - "[STATUS] == 200"
     alerts:
       - type: discord
 
-  - name: immich
-    group: aegis
-    url: http://aegis:2283
+  - name: ntfy
+    group: sleeperservice
+    url: https://ntfy.ryandlewis.dev/v1/health
+    interval: 60s
+    conditions:
+      - "[STATUS] == 200"
+      - "[BODY].healthy == true"
+    alerts:
+      - type: discord
+
+  - name: nginx-test
+    group: sleeperservice
+    url: https://test.ryandlewis.dev/
     interval: 60s
     conditions:
       - "[STATUS] == 200"
     alerts:
       - type: discord
 
-  # NixOS service, not a container: modules/nixos/schedule-bot.nix in nix-config.
-  # 503 means it's lost its Discord connection.
-  - name: schedule-bot
-    group: aegis
-    url: http://aegis:8095/health
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-      - "[BODY].ok == true"
-    alerts:
-      - type: discord
-
+  # ---------- Only reachable on Aegis's Docker network ----------
   - name: redis
     group: aegis
     url: tcp://redis:6379
@@ -231,43 +70,5 @@ endpoints:
     interval: 60s
     conditions:
       - "[CONNECTED] == true"
-    alerts:
-      - type: discord
-
-  # ---------- Cross-host: cerberus services ----------
-  - name: smokeping
-    group: cerberus
-    url: http://cerberus:8888
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: librespeed
-    group: cerberus
-    url: http://cerberus:8889
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: discord
-
-  - name: swag-https
-    group: cerberus
-    url: tcp://cerberus:443
-    interval: 60s
-    conditions:
-      - "[CONNECTED] == true"
-    alerts:
-      - type: discord
-
-  # ---------- Home Assistant ----------
-  - name: home-assistant
-    group: home-assistant
-    url: http://homeassistant:8123
-    interval: 60s
-    conditions:
-      - "[STATUS] == 200"
     alerts:
       - type: discord
