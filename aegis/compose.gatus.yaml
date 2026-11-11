@@ -1,6 +1,6 @@
 services:
   gatus:
-    image: twinproduction/gatus:latest@sha256:0a8565a61a3c10c9ae622999f576eb2b5be512ca5fdd17de776cb4bfc0160ff2
+    image: twinproduction/gatus:latest@sha256:e6cdbefbe05b70e49ab2861335d13ab5730cd67e581e7f4c995082cd7f0f952c
     container_name: gatus
     restart: unless-stopped
     env_file: ./gatus.env

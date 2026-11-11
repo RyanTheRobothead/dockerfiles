@@ -25,7 +25,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   sonarr:
-    image: linuxserver/sonarr@sha256:3b8c947d7fa173f70e40047d2c8d02835fb8416aeb5ae36def57d9ad15e2f906
+    image: linuxserver/sonarr@sha256:673dc4609a5672bc8e46069c86ffcea283a86b48d34a6c93d8da8c24a1b87571
     container_name: sonarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -41,7 +41,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   radarr:
-    image: linuxserver/radarr@sha256:ade5937813c6ae415b29db729386e53fea3ecf067a019849bafbe2d2a6ec02ba
+    image: linuxserver/radarr@sha256:51a9ac2a9eb47afc833541e5fd6c11b86eb9f810694c22fa2429e3078e9194b2
     container_name: radarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -57,7 +57,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest@sha256:d5707cfe084da21a3864c7ef0edd9c0543b5e26c79c551f84dad5ef8683af8c7
+    image: lscr.io/linuxserver/lidarr:latest@sha256:a91ef0642c15c9bd7c4260fee98fa99972c61601e37c8a96411d6a9cf0e9ad40
     container_name: lidarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -87,7 +87,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   ombi:
-    image: ghcr.io/linuxserver/ombi@sha256:cdff52cca1c613aaf67e72bf36de5ea8486fa43fe2c2b7e2dd3368d6a80510d7
+    image: ghcr.io/linuxserver/ombi@sha256:492a6f0b5d710a23fc3aff0c1c0027fbdb1419dcbc66edf7c2c2fc3680af08c1
     container_name: ombi
     environment:
       - PUID=1000
@@ -101,7 +101,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:b7eabe1f098f4e850bfd63d6721369117195410a471db1a41748ab768b81a639
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:2f708001387aa9853e744a4a4d572d9970927c479c56d6c9e199f789c5173535
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -124,7 +124,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   gluetun:
-    image: qmcgaw/gluetun@sha256:78c09588169ad05b9f88bc492ac8f80e6167e93da7526171863c0dfb88bf18d6
+    image: qmcgaw/gluetun@sha256:75df789dea20551fa973f808133a712700bf198518f9d49ed581287777508556
     container_name: gluetun
     restart: unless-stopped
     env_file: ./gluetun.env
@@ -186,7 +186,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   qbittorrent:
-    image: linuxserver/qbittorrent@sha256:05c1454f9a32967affc1f34f67f8cc0cc57dd805dca45489fe797095a6286556
+    image: linuxserver/qbittorrent@sha256:3d4c4545d51a690a0df15a2ff99038823a88a9822df8e794526447b9afbd7384
     container_name: qbittorrent
     depends_on: ["gluetun"]
     network_mode: service:gluetun
