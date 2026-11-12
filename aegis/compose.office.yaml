@@ -55,7 +55,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   nextcloud:
-    image: ghcr.io/linuxserver/nextcloud@sha256:1b5593d33a1225f28258311b35b80aa5546fed6cbafda80d39858c8ac9bbaae7
+    image: ghcr.io/linuxserver/nextcloud@sha256:2f607ed0099185662f8af145f420633d3b3612dcfbbf38721874b63fc488f4d1
     container_name: nextcloud
     # Lets php-fpm's slowlog ptrace its workers for stack traces.
     cap_add:
@@ -77,7 +77,7 @@ services:
     # Nextcloud Office's editor, reached through SWAG on Cerberus as
     # collabora.ryandlewis.dev. Standalone rather than the richdocumentscode
     # app, which CVE-2026-110447 hit and this container is not exposed to.
-    image: collabora/code@sha256:c7415b963e32eb0986a562583f154d36d3d7a461e1ddfb660a95e87094328acb
+    image: collabora/code@sha256:95f29f1c0a1778999125f53f058d968fe0afb37c95e32ebfb9f3444140faebd2
     container_name: collabora
     environment:
       - aliasgroup1=https://cloud.ryandlewis.dev:443
