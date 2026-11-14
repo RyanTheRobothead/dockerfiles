@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:d674ad98d23dc3f1871156aaebec0826bd04a159daff79841fc8615af7615fa1
+    image: willfarrell/autoheal@sha256:6c5160b1eb691c38148e7747a582e1a7fe19f9e170107cd2f915c0edb0660f99
     restart: unless-stopped
     network_mode: host
     environment:
@@ -76,7 +76,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   syncthing:
-    image: lscr.io/linuxserver/syncthing:latest@sha256:e02e82c1d1f04085b2d9179c2ab1c8367835fdda64e875bd12dfe502061cf302
+    image: lscr.io/linuxserver/syncthing:latest@sha256:c4207d8f5b66d5f67eedb636b75500b5a04898e9f33299d252f4b966c41a4128
     container_name: syncthing
     hostname: aegis_sync #optional
     environment:
