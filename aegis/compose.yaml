@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:3468f3a280d61562ba96813930490716d9b30cf29382ec6cc01c9704df7beb30
+    image: willfarrell/autoheal@sha256:d674ad98d23dc3f1871156aaebec0826bd04a159daff79841fc8615af7615fa1
     restart: unless-stopped
     network_mode: host
     environment:
@@ -125,7 +125,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   pihole:
     container_name: pihole
-    image: pihole/pihole:latest@sha256:30f803ad5dd60ff96cc0a63008a2e9271af481c1b0399a182192b2e91152c1f9
+    image: pihole/pihole:latest@sha256:66c798d79a95c2691f280329c3611dba1746117c61c9f331907ca35a06a52778
     restart: unless-stopped
     ports:
       - 53:53/tcp
