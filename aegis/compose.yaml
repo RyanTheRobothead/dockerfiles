@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:d674ad98d23dc3f1871156aaebec0826bd04a159daff79841fc8615af7615fa1
+    image: willfarrell/autoheal@sha256:3ed6515664bc09f636d0f107dcf9db914705ff086330351656c42a1c7bcff56c
     restart: unless-stopped
     network_mode: host
     environment:
@@ -76,7 +76,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   syncthing:
-    image: lscr.io/linuxserver/syncthing:latest@sha256:e02e82c1d1f04085b2d9179c2ab1c8367835fdda64e875bd12dfe502061cf302
+    image: lscr.io/linuxserver/syncthing:latest@sha256:c4207d8f5b66d5f67eedb636b75500b5a04898e9f33299d252f4b966c41a4128
     container_name: syncthing
     hostname: aegis_sync #optional
     environment:
@@ -180,7 +180,7 @@ services:
   #  labels:
   #    - docker-volume-backup.stop-during-backup=true
   code-server:
-    image: lscr.io/linuxserver/code-server:latest@sha256:29f84131fa023c006fcfea9afbf0a5f9959c1a0532cf865d8dc8dae69e3c4a17
+    image: lscr.io/linuxserver/code-server:latest@sha256:20ffca4512fcfc85dcd5612fb769233c1553192392d2ec417f0859135805f40c
     container_name: code-server
     environment:
       - PUID=1000
