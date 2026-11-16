@@ -1,7 +1,7 @@
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:d674ad98d23dc3f1871156aaebec0826bd04a159daff79841fc8615af7615fa1
+    image: willfarrell/autoheal@sha256:3ed6515664bc09f636d0f107dcf9db914705ff086330351656c42a1c7bcff56c
     restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
@@ -26,7 +26,7 @@ services:
       - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8888:80"
     restart: unless-stopped
   swag:
-    image: linuxserver/swag@sha256:40c2c28b4d6e0eaf968f77e70719f996bf9c3de231da241f8390631e4a7f0230
+    image: linuxserver/swag@sha256:34ca26b0b04130a2db511d871f224343b545792aa834bfc61b84199326cad170
     container_name: swag
     cap_add:
       - NET_ADMIN
@@ -46,7 +46,7 @@ services:
       - 80:80
     restart: unless-stopped
   librespeed:
-    image: lscr.io/linuxserver/librespeed:latest@sha256:98ddd2a1357f961392789e078d5511dd09cb7461f87a26e6fc9cfb6e69ba96a4
+    image: lscr.io/linuxserver/librespeed:latest@sha256:fa0ce663af2ecef06c143db770c9f46c60738c64bd9cc98ea36018fff841012a
     container_name: librespeed
     environment:
       - PUID=1000
