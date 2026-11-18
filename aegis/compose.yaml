@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:3ed6515664bc09f636d0f107dcf9db914705ff086330351656c42a1c7bcff56c
+    image: willfarrell/autoheal@sha256:4ae07b4de429b805f520e05ef0b241fed8b8d861c6a4e0c367bf042357bc8af5
     restart: unless-stopped
     network_mode: host
     environment:
