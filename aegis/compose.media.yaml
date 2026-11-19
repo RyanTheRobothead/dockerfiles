@@ -57,7 +57,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest@sha256:a91ef0642c15c9bd7c4260fee98fa99972c61601e37c8a96411d6a9cf0e9ad40
+    image: lscr.io/linuxserver/lidarr:latest@sha256:8fb40ada166dd1880cb1b166df5bcbb081107523f20ab60df05c313e2052a467
     container_name: lidarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -101,7 +101,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:2f708001387aa9853e744a4a4d572d9970927c479c56d6c9e199f789c5173535
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:b10044530553b2506f06279bf0b5223f9534f434f87a277da4b8fa8ac386cb58
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -172,7 +172,7 @@ services:
   #    - /etc/localtime:/etc/localtime:ro
   #    - ${DATA_DIR}/jackett/config:/config:z
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:6660787a99b2e58203539583663c973b48979fc00ff2cb78dc0ea17429e1f6ef
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:45117ba8439e2337a92ffe38a451a4dafc0be771754d05d88cdf102419d09646
     container_name: prowlarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -208,7 +208,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   audiobookshelf:
     container_name: audiobookshelf
-    image: ghcr.io/advplyr/audiobookshelf:latest@sha256:b897c33f05972fb1bf484f7487bc878fa91ec8691335c1db6e2929c3a7658efa
+    image: ghcr.io/advplyr/audiobookshelf:latest@sha256:60064c23f32fd9099fd39e82c5132c51701d1221135bbca04cd099b589e1edc3
     ports:
       - 100.117.195.49:13378:80
       - "[fd7a:115c:a1e0::b537:c331]:13378:80"
