@@ -55,7 +55,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   nextcloud:
-    image: ghcr.io/linuxserver/nextcloud@sha256:cc5a5cf7385e1a958fd4645aad76d0557ed0f58c8267825329ac7f7980fe0265
+    image: ghcr.io/linuxserver/nextcloud@sha256:c95efa1a926b652b737d9ea68197419bc9f432f93d31bb126fc2fc32e0c6f1b4
     container_name: nextcloud
     # Lets php-fpm's slowlog ptrace its workers for stack traces.
     cap_add:
@@ -77,7 +77,7 @@ services:
     # Nextcloud Office's editor, reached through SWAG on Cerberus as
     # collabora.ryandlewis.dev. Standalone rather than the richdocumentscode
     # app, which CVE-2026-110447 hit and this container is not exposed to.
-    image: collabora/code@sha256:95f29f1c0a1778999125f53f058d968fe0afb37c95e32ebfb9f3444140faebd2
+    image: collabora/code@sha256:a2f5d4e88addd46033d8440f7a13b82f7e6fe444bf8c6b5a3eadc789f0b5342b
     container_name: collabora
     environment:
       - aliasgroup1=https://cloud.ryandlewis.dev:443
@@ -95,7 +95,7 @@ services:
     restart: unless-stopped
   nc_postgres:
     container_name: nc_postgres
-    image: postgres:18@sha256:2ea8630df176ad090ec92136dee850397c5af8781e4bcf2e4162593691c61bbc
+    image: postgres:18@sha256:eb63372c1e05c755f55fa30cbd07aecc443676fc6c0fa90b9002d01537841e1a
     restart: unless-stopped
     env_file: nextcloud_postgres.env
     volumes:
