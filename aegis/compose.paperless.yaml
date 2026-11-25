@@ -9,7 +9,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   paperless_db:
     container_name: paperless_db
-    image: docker.io/library/postgres:18@sha256:eece53c7c4410fb9c6556a19b8e0f2d61708a5893e2aa0a1e3c716661374ab18
+    image: docker.io/library/postgres:18@sha256:c699303802144847d238196173655dbbecf7a96aeca1565f2b02eb671a1f0b6b
     restart: unless-stopped
     volumes:
       # Postgres 18+ keeps its data in a versioned subdirectory of this mount
@@ -50,7 +50,7 @@ services:
       - docker-volume-backup.stop-during-backup=true
   gotenberg:
     container_name: gotenberg
-    image: docker.io/gotenberg/gotenberg:9.9@sha256:9731688d1b6290e4c04d9a47dbd5fb29f92aa0076feb6592c5c777525892cd72
+    image: docker.io/gotenberg/gotenberg:9.10@sha256:7d04e465cc8f700871092c2871c04f1e70d86eb399c9887cbd86a4a809e873ce
     restart: unless-stopped
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
