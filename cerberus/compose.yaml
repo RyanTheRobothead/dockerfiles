@@ -1,7 +1,7 @@
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:3c195f2627e188237100075883be3c376e028cf851e9930e6a888304f18f25a7
+    image: willfarrell/autoheal@sha256:02bcb7b529d0e51424b2e9b67b43f639af454258924ab3a3b97f1cc7e6da367f
     restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
@@ -11,7 +11,7 @@ services:
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock
   smokeping:
-    image: ghcr.io/linuxserver/smokeping@sha256:03e7437703cf7fa4032644d0b562aebada542bc40a8dc07ee3bc77ddede1adb9
+    image: ghcr.io/linuxserver/smokeping@sha256:6d558c921bb622b4522e5e8aadde452efe3c764acf756208c3a25adc9f2ad369
     container_name: smokeping
     environment: 
       - PUID=1000
