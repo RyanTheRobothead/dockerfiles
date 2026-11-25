@@ -1,7 +1,7 @@
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:98ec1fed3c78ea8b28b55f172172511799d73dc4f024381944fd47935a486b84
+    image: willfarrell/autoheal@sha256:3c195f2627e188237100075883be3c376e028cf851e9930e6a888304f18f25a7
     restart: unless-stopped
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
@@ -26,7 +26,7 @@ services:
       - "[fd7a:115c:a1e0:ab12:4843:cd96:625d:5e80]:8888:80"
     restart: unless-stopped
   swag:
-    image: linuxserver/swag@sha256:850f009f4837d5dfc86c067c17231882f57989bcbbd709f56c7c9343126f5c3d
+    image: linuxserver/swag@sha256:11df3a68820e5c6afa1906c2b9119e77c92ce51502b79fd3946ee394aa3cea9e
     container_name: swag
     cap_add:
       - NET_ADMIN

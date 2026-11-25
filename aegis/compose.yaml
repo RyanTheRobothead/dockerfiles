@@ -12,7 +12,7 @@ include:
 services:
   autoheal:
     container_name: autoheal
-    image: willfarrell/autoheal@sha256:98ec1fed3c78ea8b28b55f172172511799d73dc4f024381944fd47935a486b84
+    image: willfarrell/autoheal@sha256:3c195f2627e188237100075883be3c376e028cf851e9930e6a888304f18f25a7
     restart: unless-stopped
     network_mode: host
     environment:
@@ -149,7 +149,7 @@ services:
     # release version instead of using `latest`.
     # Check https://github.com/offen/docker-volume-backup/releases
     # for a list of available releases.
-    image: offen/docker-volume-backup:v2.50.1@sha256:06fccb4c6ff79c4d5e4a839ace17c174da82a9327f43594f8a2c6a15f43bc660
+    image: offen/docker-volume-backup:v2.50.2@sha256:c0d241667212b3a50f6820e8c5e195627f8648520dd41cc3304e1b4c8041f95b
     container_name: backup
     restart: unless-stopped
     env_file: ./backup.env # see below for configuration reference

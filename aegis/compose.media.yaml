@@ -87,7 +87,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   ombi:
-    image: ghcr.io/linuxserver/ombi@sha256:617c872fd5a05b1cabbb052c58974cf8dd90d972d18417d28cf137fd7579a17b
+    image: ghcr.io/linuxserver/ombi@sha256:877c43b00054117c23c728ad15b8bb8f9f26457155588c10dd9f38aae850d0f3
     container_name: ombi
     environment:
       - PUID=1000
@@ -172,7 +172,7 @@ services:
   #    - /etc/localtime:/etc/localtime:ro
   #    - ${DATA_DIR}/jackett/config:/config:z
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:45117ba8439e2337a92ffe38a451a4dafc0be771754d05d88cdf102419d09646
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:2806c9b763810589c42157730d547c293639e55c7610e9f5069314854639ec48
     container_name: prowlarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -186,7 +186,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   qbittorrent:
-    image: linuxserver/qbittorrent@sha256:3d4c4545d51a690a0df15a2ff99038823a88a9822df8e794526447b9afbd7384
+    image: linuxserver/qbittorrent@sha256:a8083a3337a175e84374e3c8cf34ab76566c54502a2e8580e53b6deaa5b2f619
     container_name: qbittorrent
     depends_on: ["gluetun"]
     network_mode: service:gluetun
