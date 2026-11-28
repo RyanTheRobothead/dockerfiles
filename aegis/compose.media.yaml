@@ -25,7 +25,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   sonarr:
-    image: linuxserver/sonarr@sha256:339814bbf50599ac3b59077c252f29833d0138b59a062d0e82ce37bdc7f04f86
+    image: linuxserver/sonarr@sha256:5c943771636f8f13b833efc0eae81b9373737435a262503a29157842c052ed0b
     container_name: sonarr
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -72,7 +72,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   nzbget:
-    image: lscr.io/linuxserver/nzbget@sha256:217c7028b9d671b34bfb60adcd09f3d6d24761226ec7025b3438eaa55fc0728e
+    image: lscr.io/linuxserver/nzbget@sha256:c2c2d92d62e6c1c2ed054fc0bbfc9ca3629b38ba7d10714af0031a46ea92e18d
     container_name: nzbget
     depends_on: ["gluetun"]
     network_mode: service:gluetun
@@ -124,7 +124,7 @@ services:
     labels:
       - docker-volume-backup.stop-during-backup=true
   gluetun:
-    image: qmcgaw/gluetun@sha256:08f6770a4b157787690dcd2d4ddb3560ec28860102530b5cdc4f632f24bfae9e
+    image: qmcgaw/gluetun@sha256:6d21823e204e99adbb0aa811105504514d16150cc5299f443f191c28792fcf4b
     container_name: gluetun
     restart: unless-stopped
     env_file: ./gluetun.env
